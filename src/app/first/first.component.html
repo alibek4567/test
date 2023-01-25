@@ -1,0 +1,52 @@
+<div class="content">
+    <h2 style="text-align: center;">First page</h2>
+    <mat-radio-group aria-label="Select an option">
+        <mat-radio-button checked value="true" (click)="setStatus(true)" >Физ. лицо</mat-radio-button> |
+        <mat-radio-button value="false" (click)="setStatus(false)">Юр. лицо</mat-radio-button>
+    </mat-radio-group>
+    
+    <form class="form" *ngIf="profileType" [formGroup]="profileForm" (ngSubmit)="submitHandler(profileForm)">
+        <label>Фамилия*</label>
+        <input formControlName="lastName" maxlength="255" [ngModel]="data?.info.lastName">
+        <div *ngIf="errors">
+            <p class="error" *ngIf="lastName?.invalid">Введите Фамилию</p>
+        </div>
+    
+        <label>Имя*</label>
+        <input formControlName="firstName" maxlength="255" [ngModel]="data?.info.firstName">
+        <div *ngIf="errors">
+            <p class="error" *ngIf="firstName?.invalid">Введите Имя</p>
+        </div>
+    
+        <label>Отчество</label>
+        <input formControlName="fatherName" maxlength="255" [ngModel]="data?.info.fatherName">
+    
+        <label>ИИН*</label>
+        <input formControlName="iin" minlength="12" maxlength="12" [ngModel]="data?.info.iin">
+        <div *ngIf="errors">
+            <p class="error" *ngIf="iin?.invalid">ИИН должен состоять из 12 цифр</p>
+        </div>
+    
+        <button type="submit" mat-button class="submit">Далее</button>
+    </form>
+    
+    <form class="form" *ngIf="!profileType" [formGroup]="entityForm" (ngSubmit)="submitHandler(entityForm)">
+    
+        <label>Наименование организации*</label>
+        <input formControlName="entityName" maxlength="255" [ngModel]="data?.info.entityName">
+        <div *ngIf="errors">
+            <p class="error" *ngIf="entityName?.invalid">Введите Оганизацию</p>
+        </div>
+    
+        <label>БИН*</label>
+        <input formControlName="bin" minlength="12" maxlength="12" [ngModel]="data?.info.bin">
+        <div *ngIf="errors">
+            <p class="error" *ngIf="bin?.invalid">БИН должен состоять из 12 цифр</p>
+        </div>
+    
+        <button type="submit" mat-button class="submit">Далее</button>
+    </form>
+</div>
+
+
+

@@ -1,0 +1,14 @@
+<div class="content">
+    <h2 style="text-align: center;">Third Page</h2>
+    <form class="form" [formGroup]="emailForm" (ngSubmit)="submitHandler(emailForm)">
+    <label>Почта*</label>
+    <input formControlName="email" maxlength="255" [ngModel]="data?.email?.email">
+    <div *ngIf="errors">
+        <p class="error" *ngIf="email?.errors?.['required']">Введите Почту</p>
+        <p class="error" *ngIf="email?.invalid">Некорректная Почта</p>
+    </div>
+    <button type="button" (click)="back()" mat-button class="submit">Назад</button> |
+    <button type="submit" mat-button class="submit">Далее</button>
+    </form>
+</div>
+

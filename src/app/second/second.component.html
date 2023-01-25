@@ -1,0 +1,14 @@
+<div class="content">
+    <h2 style="text-align: center;">Second Page</h2>
+
+    <form class="form" [formGroup]="fileUploadForm" (ngSubmit)="submitHandler(fileUploadForm)">
+        <label *ngIf="data.file">{{data.file}}</label>
+        <input type="file" accept="application/pdf" formControlName="file" >
+        <div *ngIf="errors">
+            <p class="error" *ngIf="file?.invalid">Загрузите файл</p>
+        </div>
+        <button type="button" (click)="back()" mat-button class="submit">Назад</button> | 
+        <button type="submit" mat-button class="submit">Далее</button>
+    </form>
+</div>
+
